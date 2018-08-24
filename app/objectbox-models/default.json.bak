@@ -1,0 +1,62 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:910766362933879150",
+      "lastPropertyId": "9:4346960180084896545",
+      "name": "SMS",
+      "properties": [
+        {
+          "id": "1:7156467828472895456",
+          "name": "id"
+        },
+        {
+          "id": "2:5128363133674733760",
+          "name": "address"
+        },
+        {
+          "id": "3:7975853642525699660",
+          "name": "person"
+        },
+        {
+          "id": "4:8443485887914291985",
+          "name": "date"
+        },
+        {
+          "id": "5:8770708929987680646",
+          "name": "type"
+        },
+        {
+          "id": "6:9107173936514142688",
+          "name": "body"
+        },
+        {
+          "id": "7:798305923109379671",
+          "name": "subject"
+        },
+        {
+          "id": "8:8522861734808440544",
+          "name": "got"
+        },
+        {
+          "id": "9:4346960180084896545",
+          "name": "express"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:910766362933879150",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
