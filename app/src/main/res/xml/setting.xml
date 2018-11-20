@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="基本设置">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="toggle"
+            android:title="显示已取快递" />
+
+        <Preference
+            android:key="filter"
+            android:summary="设置快递短信过滤器"
+            android:title="过滤器设置" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="notification"
+            android:title="发送通知" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="清除">
+        <Preference
+            android:key="clean"
+            android:summary="清空当前所有快递信息"
+            android:title="清除所有快递" />
+
+        <Preference
+            android:key="reset"
+            android:summary="慎用，重置时间有可能造成信息重复"
+            android:title="重置快递时间" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,10 +1,9 @@
-package com.leeiidesu.smsexpress
+package com.leeiidesu.smsexpress.ui
 
 import android.content.*
 import android.graphics.Color
 import android.os.Bundle
 import android.os.IBinder
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -13,6 +12,8 @@ import android.view.*
 import android.widget.CheckedTextView
 import android.widget.TextView
 import android.widget.Toast
+import com.leeiidesu.smsexpress.*
+import com.leeiidesu.smsexpress.model.SMS
 import io.objectbox.BoxStore
 import io.objectbox.kotlin.boxFor
 
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
         toolbar.title = "今天有老婆的快递吗"
 
 
@@ -138,7 +140,11 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+                startActivity(Intent(this, SettingActivity::class.java))
+                true
+            }
+
             R.id.action_new -> {
                 smsBinder?.loadNews()
                 true

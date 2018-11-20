@@ -1,4 +1,4 @@
-package com.leeiidesu.smsexpress
+package com.leeiidesu.smsexpress.model
 
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id

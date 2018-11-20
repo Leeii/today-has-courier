@@ -1,6 +1,5 @@
 package com.leeiidesu.smsexpress
 
-import android.app.Notification
 import android.app.Service
 import android.content.Context
 import android.content.Intent
@@ -8,7 +7,7 @@ import android.database.ContentObserver
 import android.net.Uri
 import android.os.Binder
 import android.os.IBinder
-import android.support.v4.app.NotificationCompat
+import com.leeiidesu.smsexpress.model.SMS
 import io.objectbox.BoxStore
 import io.objectbox.kotlin.boxFor
 import java.util.regex.Pattern
