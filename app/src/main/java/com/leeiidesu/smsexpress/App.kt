@@ -2,6 +2,7 @@ package com.leeiidesu.smsexpress
 
 import android.app.Application
 import android.content.Intent
+import com.leeiidesu.smsexpress.model.MyObjectBox
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader

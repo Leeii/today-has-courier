@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:910766362933879150",
-      "lastPropertyId": "10:2415725314528596337",
+      "lastPropertyId": "11:7435410022597843060",
       "name": "SMS",
       "properties": [
         {
@@ -47,13 +47,70 @@
         {
           "id": "10:2415725314528596337",
           "name": "code"
+        },
+        {
+          "id": "11:7435410022597843060",
+          "indexId": "1:607858749789452751",
+          "name": "filterId"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:3710476474951451620",
+      "lastPropertyId": "11:8569511984991092346",
+      "name": "Filter",
+      "properties": [
+        {
+          "id": "1:380175829950571651",
+          "name": "id"
+        },
+        {
+          "id": "2:6188381932973149605",
+          "name": "keywordsRegex"
+        },
+        {
+          "id": "3:2071937926809835178",
+          "name": "codeRegex"
+        },
+        {
+          "id": "4:6532841188870049045",
+          "name": "nominate"
+        },
+        {
+          "id": "5:7756505761555527816",
+          "name": "lastReadTime"
+        },
+        {
+          "id": "6:3194404406204740009",
+          "name": "startColor"
+        },
+        {
+          "id": "7:5711740850719970318",
+          "name": "endColor"
+        },
+        {
+          "id": "8:3858510811636282450",
+          "name": "fixedName"
+        },
+        {
+          "id": "9:961733448415475250",
+          "name": "nameRegex"
+        },
+        {
+          "id": "10:9208616319075418089",
+          "name": "nameStartSplit"
+        },
+        {
+          "id": "11:8569511984991092346",
+          "name": "nameEndSplit"
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:910766362933879150",
-  "lastIndexId": "0:0",
+  "lastEntityId": "2:3710476474951451620",
+  "lastIndexId": "1:607858749789452751",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 4,
