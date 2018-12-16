@@ -1,12 +1,17 @@
 package com.leeiidesu.smsexpress.ui
 
+import android.Manifest
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.content.pm.PackageManager
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.os.IBinder
+import android.preference.Preference
+import android.preference.PreferenceManager
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -16,6 +21,8 @@ import android.widget.CheckedTextView
 import android.widget.TextView
 import android.widget.Toast
 import com.leeiidesu.smsexpress.*
+import com.leeiidesu.smsexpress.model.Filter_.endColor
+import com.leeiidesu.smsexpress.model.Filter_.startColor
 import com.leeiidesu.smsexpress.model.SMS
 import com.leeiidesu.smsexpress.model.SMS_
 import io.objectbox.BoxStore
@@ -102,6 +109,23 @@ class MainActivity : AppCompatActivity() {
         recycler.adapter = mAdapter
 
         getDataList()
+
+
+
+        requestPermissions(arrayOf(Manifest.permission.READ_SMS), 0x12)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            smsBinder?.loadNews()
+
+
+            getDataList()
+            true
+        }
+
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
 
@@ -111,15 +135,27 @@ class MainActivity : AppCompatActivity() {
         }
 
         val boxFor = mBox!!.boxFor(SMS::class)
+
+
+        var showGot = PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean("toggle", true)
+
+
         val find = boxFor.query()
                 .orderDesc(SMS_.date)
                 .orderDesc(SMS_.got)
-                .build()
+
+        if (!showGot) {
+            find.equal(SMS_.got, 0)
+        }
+
+
+        val list = find.build()
                 .find((pageIndex - 1) * 20L, 20)
         if (pageIndex == 1) {
             mDataList.clear()
         }
-        mDataList.addAll(find)
+        mDataList.addAll(list)
 
         if (refresh.isRefreshing) {
             refresh.finishRefresh()
@@ -128,7 +164,7 @@ class MainActivity : AppCompatActivity() {
         if (refresh.isLoading) {
             refresh.finishLoadMore()
         }
-        refresh.isEnableLoadMore = find.size >= 20
+        refresh.isEnableLoadMore = list.size >= 20
         mAdapter.notifyDataSetChanged()
     }
 
@@ -201,12 +237,10 @@ class Adapter(var mDataList: ArrayList<SMS>) : RecyclerView.Adapter<MyViewHolder
         holder.checked.visibility = if (sms.got == 1) View.GONE else View.VISIBLE
         holder.checked.isChecked = mSelectedItems.contains(sms)
 
-        holder.container.setBackgroundResource(if ("京东物流".equals(sms.express)) {
-            R.drawable.shape_card_jd_bg
-        } else {
-            R.drawable.shape_card_taobao_bg
-        })
+        val drawable = GradientDrawable(GradientDrawable.Orientation.TL_BR,
+                intArrayOf(sms.filter.target.startColor, sms.filter.target.endColor))
 
+        holder.container.background = drawable
 
         holder.itemView.setOnClickListener {
             val index = holder.adapterPosition

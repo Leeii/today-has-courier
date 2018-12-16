@@ -15,6 +15,6 @@ data class SMS(
         var subject: String? = null,
         var code: String? = null,
         var express: String? = null,
-        var got: Int = 0,
-        var filter: ToOne<Filter>? = null
-)
+        var got: Int = 0){
+    lateinit var filter: ToOne<Filter>
+}

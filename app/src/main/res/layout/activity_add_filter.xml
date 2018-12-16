@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="关键字"
+                android:text="关键字 (暂时为数据库匹配方式，通配符是 %)"
                 android:textColor="#000"
                 android:textSize="14sp" />
 

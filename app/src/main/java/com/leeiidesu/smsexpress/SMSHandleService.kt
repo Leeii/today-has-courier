@@ -11,6 +11,8 @@ import com.leeiidesu.smsexpress.model.Filter
 import com.leeiidesu.smsexpress.model.SMS
 import io.objectbox.BoxStore
 import io.objectbox.kotlin.boxFor
+import io.objectbox.relation.RelationInfo
+import io.objectbox.relation.ToOne
 import java.util.regex.Pattern
 
 class SMSHandleService : Service() {
@@ -67,7 +69,8 @@ class SMSHandleService : Service() {
                         val code = findGetCode(body, filter)
                         val expressName = findExpressName(body, filter)
                         val sms = SMS(0, address, person, date, type, body, subject, code, expressName)
-                        sms.filter!!.target = filter
+                        sms.filter.target = filter
+
                         smsList.add(sms)
                     }
                     query.close()

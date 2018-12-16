@@ -21,10 +21,41 @@ class AddFilterActivity : AppCompatActivity() {
 
     private var mToast: Toast? = null
 
+    private  var id = 0L
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_filter)
+        val filter1 = intent.getParcelableExtra<Filter>("data")
+        if (filter1 != null) {
+            id = filter1.id
+
+            startColor = filter1.startColor;
+            endColor = filter1.endColor;
+
+            alias.setText(filter1.alias)
+            sms_matcher.setText(filter1.keywordsRegex)
+            code_matcher.setText(filter1.codeRegex)
+
+            fixed.isChecked = filter1.fixedName
+
+            if (filter1.fixedName) {
+                fixedName.visibility = View.VISIBLE
+                rangeName.visibility = View.GONE
+
+                fixedName.setText(filter1.nominate)
+            } else {
+                fixedName.visibility = View.GONE
+                rangeName.visibility = View.VISIBLE
+
+                name_regex.setText(filter1.nameRegex)
+                splitStart.setText("${filter1.nameStartSplit}")
+                splitEnd.setText("${filter1.nameEndSplit}")
+            }
+        }
+
+
         setSupportActionBar(toolbar)
         supportActionBar!!.title = "过滤器"
         toolbar.setOnMenuItemClickListener { item ->
@@ -43,10 +74,10 @@ class AddFilterActivity : AppCompatActivity() {
 
                     val expressName = fixedName.text.toString()
                     val expressMatcher = name_regex.text.toString()
-                    val start = splitStart.text.toString().toInt()
-                    val end = splitEnd.text.toString().toInt()
+                    val start = if (fixed.isChecked) 0 else splitStart.text.toString().toInt()
+                    val end = if (fixed.isChecked) 0 else splitEnd.text.toString().toInt()
 
-                    val filter = Filter(0, alias.text.toString(), smsText, codeMatcher, expressName, fixed.isChecked,
+                    val filter = Filter(id, alias.text.toString(), smsText, codeMatcher, expressName, fixed.isChecked,
                             expressMatcher, start, end, 0, startColor, endColor)
                     val boxFor = (application as App).boxStore!!.boxFor(Filter::class.java)
 

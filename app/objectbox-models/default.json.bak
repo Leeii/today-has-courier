@@ -58,7 +58,7 @@
     },
     {
       "id": "2:3710476474951451620",
-      "lastPropertyId": "7:5711740850719970318",
+      "lastPropertyId": "11:8569511984991092346",
       "name": "Filter",
       "properties": [
         {
@@ -88,6 +88,22 @@
         {
           "id": "7:5711740850719970318",
           "name": "endColor"
+        },
+        {
+          "id": "8:3858510811636282450",
+          "name": "fixedName"
+        },
+        {
+          "id": "9:961733448415475250",
+          "name": "nameRegex"
+        },
+        {
+          "id": "10:9208616319075418089",
+          "name": "nameStartSplit"
+        },
+        {
+          "id": "11:8569511984991092346",
+          "name": "nameEndSplit"
         }
       ],
       "relations": []
